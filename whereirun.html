@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>
+   Where &amp; What I Run
+</title>
+</head>
+<style>
+   body{
+      margin: 0;
+      margin-top: 3%;
+      height: 100%;
+      font-family: sans-serif;
+      text-align:center;
+   }
+   ul{
+      list-style: none;
+      display: inline-block;
+   }
+   li{
+      text-align: left;
+   }
+   #fivek{
+      background:#505160;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+   }
+   #tenk{
+      background:#EC96A4;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+   }
+   #half{
+      background: #598234;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+   }
+   #full{
+      background: #336B87;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+   }
+   #training{
+      background: #AEBD38;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+   }
+   #notyet{
+      background: #D6D6D6;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+   }
+</style>
+<body>
+<h1>Mike Runs in the US</h1>
+<div id="container"></div>
+<div id="legend">
+   <ul>
+      <li><div id="fivek"></div>&nbsp;&nbsp;5K</li>
+      <li><div id="tenk"></div>&nbsp;&nbsp;10K</li>
+      <li><div id="half"></div>&nbsp;&nbsp;Half Marathon</li>
+      <li><div id="full"></div>&nbsp;&nbsp;Marathon</li>
+      <li><div id="training"></div>&nbsp;&nbsp;Training</li>
+      <li><div id="notyet"></div>&nbsp;&nbsp;Haven't Run here yet</li>
+   </ul>
+</div>
+<script src="scripts/raphael.min.js"></script>
+<script src="scripts/us-map-svg.js"></script>
+<script>
+	const runCaz = ['or','fl','sc','nc'];
+	const run5k = ['fl','tn','or','nc','sc','wa'];
+	const run10k = ['sc','or'];
+	const runHalf = [];
+	const runMarathon = [];
+	const raph = Raphael("container", 1000, 700);
+	const run5kDraw = {
+      "fill": "#505160",
+      "stroke": "#FFF",
+      "stroke-opacity": "1",
+      "stroke-linejoin": "round",
+      "stroke-miterlimit": "4",
+      "stroke-width": "0.75",
+      "stroke-dasharray": "none"};
+	const run10kDraw = {
+      "fill": "#EC96A4",
+      "stroke": "#FFF",
+      "stroke-opacity": "1",
+      "stroke-linejoin": "round",
+      "stroke-miterlimit": "4",
+      "stroke-width": "0.75",
+      "stroke-dasharray": "none"
+   };
+	const runHalfDraw = {
+      "fill": "#598234",
+      "stroke": "#FFF",
+      "stroke-opacity": "1",
+      "stroke-linejoin": "round",
+      "stroke-miterlimit": "4",
+      "stroke-width": "0.75",
+      "stroke-dasharray": "none"
+   };
+	const runMarathonDraw = {
+      "fill": "#336B87",
+      "stroke": "#FFF",
+      "stroke-opacity": "1",
+      "stroke-linejoin": "round",
+      "stroke-miterlimit": "4",
+      "stroke-width": "0.75",
+      "stroke-dasharray": "none"
+   };
+	const noRunDraw = {
+      "fill": "#D6D6D6",
+      "stroke": "#FFF",
+      "stroke-opacity": "1",
+      "stroke-linejoin": "round",
+      "stroke-miterlimit": "4",
+      "stroke-width": "0.75",
+      "stroke-dasharray": "none"
+   };
+   const runCazDraw = {
+      "fill": "#AEBD38",
+      "stroke": "#FFF",
+      "stroke-opacity": "1",
+      "stroke-linejoin": "round",
+      "stroke-miterlimit": "4",
+      "stroke-width": "0.75",
+      "stroke-dasharray": "none"
+   };
+	for (var state in usMap){
+      if (runMarathon.indexOf(state) >= 0) {
+
+         raph.path(usMap[state]).attr(runMarathonDraw);
+      }else if (runHalf.indexOf(state) >= 0) {
+
+         raph.path(usMap[state]).attr(runHalfDraw);
+      }else if (run10k.indexOf(state) >= 0) {
+
+         raph.path(usMap[state]).attr(run10kDraw);
+      }else if (run5k.indexOf(state) >= 0) {
+
+         raph.path(usMap[state]).attr(run5kDraw);
+      }else if (runCaz.indexOf(state) >= 0) {
+
+         raph.path(usMap[state]).attr(runCazDraw);
+      }else{
+
+         raph.path(usMap[state]).attr(noRunDraw);
+      }
+	}
+
+</script>
+</body>
+</html>
