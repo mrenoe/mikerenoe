@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "Mike-Renoe",
+  "routes": [
+    {
+      "src": "/whereirun",
+      "dest": "/whereirun.html"
+    }
+  ]
+}

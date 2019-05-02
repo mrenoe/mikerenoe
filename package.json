@@ -1,0 +1,19 @@
+{
+  "name": "mikerenoe",
+  "version": "1.0.0",
+  "description": "Personal website for Mike Renoe",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrenoe/mikerenoe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrenoe/mikerenoe/issues"
+  },
+  "homepage": "https://github.com/mrenoe/mikerenoe#readme"
+}

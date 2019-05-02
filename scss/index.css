@@ -1,0 +1,236 @@
+@font-face {
+  font-family: 'simpelmedium';
+  src: url("simpel-medium.woff2") format("woff2"), url("simpel-medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  background-color: #eeeeee;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'simpelmedium', Georgia, serif;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+body {
+  border: 8px solid #494c4e;
+  margin: 0px;
+}
+
+header {
+  padding: 30px 30px 0 30px;
+}
+
+content,
+footer {
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer {
+  padding-bottom: 2em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.nav-right {
+  float: right;
+  vertical-align: middle;
+  margin-top: 4em;
+}
+
+.list-item {
+  float: left;
+  margin-left: 2em;
+}
+
+.list-item a,
+.list-item a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.list-item a:hover {
+  text-decoration: underline;
+}
+
+.site-logo img {
+  width: 150px;
+  height: 150px;
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 1.5em;
+}
+
+.welcome-text-hero {
+  padding: 5em 2em 6em 2em;
+  max-width: 70em;
+  margin: 0 auto;
+}
+
+.me-the-image {
+  padding: 0 12em 0 12em;
+}
+
+.cta-button {
+  border-radius: 5px;
+  border: 1px solid #7aa5d2;
+  padding: 1em 1.5em;
+  display: inline-block;
+  font-size: 1.5em;
+  font-style: italic;
+  margin: 0 1em;
+  margin-bottom: 0px;
+  margin-bottom: 1em;
+  min-width: 10em;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.about-me,
+.services {
+  padding: 2em 14em;
+  line-height: 1.5em;
+}
+
+.about-me a,
+.about-me a:visited,
+.services a,
+.services a:visited {
+  color: #7aa5d2;
+  text-decoration: none;
+}
+
+.about-me a:hover,
+.services a:hover {
+  text-decoration: underline;
+}
+
+.about-me h3,
+.services h3 {
+  padding-bottom: 1em;
+  font-weight: 700;
+}
+
+.about-me h4,
+.services h4 {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: #7aa5d2;
+}
+
+a.cta-button, a.cta-button:visited {
+  color: black;
+  text-decoration: none;
+}
+
+a.cta-button:hover {
+  text-decoration: underline;
+}
+
+.cta-email {
+  padding: 3em 9em;
+  margin: auto;
+  text-align: center;
+  border: 1px solid lightgray;
+  margin-bottom: 4em;
+}
+
+.cta-email h1 {
+  padding-bottom: 1em;
+}
+
+.cta-email footer {
+  text-align: center;
+  margin: 3em auto;
+}
+
+#fivek {
+  background: #505160;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+#tenk {
+  background: #ec96a4;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+#half {
+  background: #598234;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+#full {
+  background: #336b87;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+#training {
+  background: #aebd38;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+#notyet {
+  background: #d6d6d6;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+.run-title h1 {
+  padding: 1em 0;
+  text-align: center;
+}
+
+#run-map-container {
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+#legend {
+  padding: 0 0 1em 3em;
+}
+/*# sourceMappingURL=index.css.map */
