@@ -5,7 +5,14 @@
     {
       "src": "/whereirun",
       "dest": "/whereirun.html"
+    },
+    {
+      "src": "/(.*)",
+      "status": 301,
+      "headers": {
+        "Location": "https://mikerenoe.com/$1"
+      }
     }
   ],
-  "alias": "mikerenoe.com"
+  "alias": "www.mikerenoe.com"
 }
