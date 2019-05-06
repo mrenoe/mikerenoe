@@ -73,7 +73,6 @@
       const run10k = ['sc', 'or', 'nc'];
       const runHalf = ['or'];
       const runMarathon = [];
-      const raph = Raphael('run-map-container', 1000, 700);
       const run5kDraw = {
         fill: '#505160',
         stroke: '#FFF',
@@ -128,21 +127,30 @@
         'stroke-width': '0.75',
         'stroke-dasharray': 'none'
       };
-      for (var state in usMap) {
-        if (runMarathon.indexOf(state) >= 0) {
-          raph.path(usMap[state]).attr(runMarathonDraw);
-        } else if (runHalf.indexOf(state) >= 0) {
-          raph.path(usMap[state]).attr(runHalfDraw);
-        } else if (run10k.indexOf(state) >= 0) {
-          raph.path(usMap[state]).attr(run10kDraw);
-        } else if (run5k.indexOf(state) >= 0) {
-          raph.path(usMap[state]).attr(run5kDraw);
-        } else if (runCaz.indexOf(state) >= 0) {
-          raph.path(usMap[state]).attr(runCazDraw);
-        } else {
-          raph.path(usMap[state]).attr(noRunDraw);
+      function drawMap(raph) {
+        for (var state in usMap) {
+          if (runMarathon.indexOf(state) >= 0) {
+            raph.path(usMap[state]).attr(runMarathonDraw);
+          } else if (runHalf.indexOf(state) >= 0) {
+            raph.path(usMap[state]).attr(runHalfDraw);
+          } else if (run10k.indexOf(state) >= 0) {
+            raph.path(usMap[state]).attr(run10kDraw);
+          } else if (run5k.indexOf(state) >= 0) {
+            raph.path(usMap[state]).attr(run5kDraw);
+          } else if (runCaz.indexOf(state) >= 0) {
+            raph.path(usMap[state]).attr(runCazDraw);
+          } else {
+            raph.path(usMap[state]).attr(noRunDraw);
+          }
         }
       }
+      w = document.getElementById('run-map-container').clientWidth / 0.8;
+      h = w / 0.8;
+
+      var paper = Raphael('run-map-container');
+      paper.setViewBox(0, 0, w, h, true);
+      paper.setSize('100%', '100%');
+      drawMap(paper);
     </script>
   </body>
 </html>
