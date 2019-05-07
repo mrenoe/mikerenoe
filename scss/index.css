@@ -198,6 +198,7 @@ h1 {
 .about-me,
 .services {
   line-height: 1.5em;
+  padding: 2em 8em;
 }
 
 @media all and (max-width: 640px) {
