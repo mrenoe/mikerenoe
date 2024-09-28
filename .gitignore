@@ -2,3 +2,4 @@
 \.vscode
 
 css/\.DS_Store
+.vercel

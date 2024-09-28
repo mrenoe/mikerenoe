@@ -1,156 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="favicon.png" type="image/x-icon" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <title>
-      Where &amp; What I Run
-    </title>
-    <link rel="stylesheet" type="text/css" href="scss/index.css" />
-  </head>
-  <body>
-    <header>
-      <a href="/" class="site-logo">
-        <img alt="Mike Renoe's logo" title="logo" src="images/logo.png"
-      /></a>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="favicon.png" type="image/x-icon" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>Where &amp; What I Run</title>
+        <link rel="stylesheet" type="text/css" href="scss/index.css" />
+    </head>
+    <body>
+        <header>
+            <a href="/" class="site-logo">
+                <img alt="Mike Renoe's logo" title="logo" src="images/logo.png"
+            /></a>
 
-      <ul class="nav-right">
-        <li class="list-item"><a href="/">Home</a></li>
-        <li class="list-item"><a href="whereirun.html">Where I've Run</a></li>
-        <li class="list-item">
-          <a href="https://medium.com/@mrenoe" target="_blank">Blog</a>
-        </li>
-        <li class="list-item">
-          <a href="https://github.com/mrenoe" target="_blank">Github</a>
-        </li>
-      </ul>
-    </header>
-    <section class="run-title"><h1>Mike Runs the USA</h1></section>
-    <section id="legend">
-      <ul>
-        <li>
-          <div id="fivek"></div>
-          &nbsp;&nbsp;5K
-        </li>
-        <li>
-          <div id="tenk"></div>
-          &nbsp;&nbsp;10K
-        </li>
-        <li>
-          <div id="half"></div>
-          &nbsp;&nbsp;Half Marathon
-        </li>
-        <li>
-          <div id="full"></div>
-          &nbsp;&nbsp;Marathon
-        </li>
-        <li>
-          <div id="training"></div>
-          &nbsp;&nbsp;Training
-        </li>
-        <li>
-          <div id="notyet"></div>
-          &nbsp;&nbsp;Haven't Run Here Yet
-        </li>
-      </ul>
-    </section>
-    <div id="run-map-container"></div>
-    <footer>
-      Copyright Mike Renoe 2019
-    </footer>
+            <ul class="nav-right">
+                <li class="list-item"><a href="/">Home</a></li>
+                <li class="list-item">
+                    <a href="whereirun.html">Where I've Run</a>
+                </li>
+                <li class="list-item">
+                    <a href="https://medium.com/@mrenoe" target="_blank"
+                        >Blog</a
+                    >
+                </li>
+                <li class="list-item">
+                    <a href="https://github.com/mrenoe" target="_blank"
+                        >Github</a
+                    >
+                </li>
+            </ul>
+        </header>
+        <section class="run-title"><h1>Mike Runs the USA</h1></section>
+        <section id="legend">
+            <ul>
+                <li>
+                    <div id="fivek"></div>
+                    &nbsp;&nbsp;5K
+                </li>
+                <li>
+                    <div id="tenk"></div>
+                    &nbsp;&nbsp;10K
+                </li>
+                <li>
+                    <div id="half"></div>
+                    &nbsp;&nbsp;Half Marathon
+                </li>
+                <li>
+                    <div id="full"></div>
+                    &nbsp;&nbsp;Marathon
+                </li>
+                <li>
+                    <div id="training"></div>
+                    &nbsp;&nbsp;Training
+                </li>
+                <li>
+                    <div id="notyet"></div>
+                    &nbsp;&nbsp;Haven't Run Here Yet
+                </li>
+            </ul>
+        </section>
+        <div id="run-map-container"></div>
+        <footer>Copyright Mike Renoe 2019</footer>
 
-    <script src="scripts/raphael.min.js"></script>
-    <script src="scripts/us-map-svg.js"></script>
-    <script>
-      const runCaz = ['or', 'fl', 'sc', 'nc'];
-      const run5k = ['fl', 'tn', 'or', 'nc', 'sc', 'wa'];
-      const run10k = ['sc', 'or', 'nc'];
-      const runHalf = ['or'];
-      const runMarathon = [];
-      const run5kDraw = {
-        fill: '#505160',
-        stroke: '#FFF',
-        'stroke-opacity': '1',
-        'stroke-linejoin': 'round',
-        'stroke-miterlimit': '4',
-        'stroke-width': '0.75',
-        'stroke-dasharray': 'none'
-      };
-      const run10kDraw = {
-        fill: '#EC96A4',
-        stroke: '#FFF',
-        'stroke-opacity': '1',
-        'stroke-linejoin': 'round',
-        'stroke-miterlimit': '4',
-        'stroke-width': '0.75',
-        'stroke-dasharray': 'none'
-      };
-      const runHalfDraw = {
-        fill: '#598234',
-        stroke: '#FFF',
-        'stroke-opacity': '1',
-        'stroke-linejoin': 'round',
-        'stroke-miterlimit': '4',
-        'stroke-width': '0.75',
-        'stroke-dasharray': 'none'
-      };
-      const runMarathonDraw = {
-        fill: '#336B87',
-        stroke: '#FFF',
-        'stroke-opacity': '1',
-        'stroke-linejoin': 'round',
-        'stroke-miterlimit': '4',
-        'stroke-width': '0.75',
-        'stroke-dasharray': 'none'
-      };
-      const noRunDraw = {
-        fill: '#D6D6D6',
-        stroke: '#FFF',
-        'stroke-opacity': '1',
-        'stroke-linejoin': 'round',
-        'stroke-miterlimit': '4',
-        'stroke-width': '0.75',
-        'stroke-dasharray': 'none'
-      };
-      const runCazDraw = {
-        fill: '#AEBD38',
-        stroke: '#FFF',
-        'stroke-opacity': '1',
-        'stroke-linejoin': 'round',
-        'stroke-miterlimit': '4',
-        'stroke-width': '0.75',
-        'stroke-dasharray': 'none'
-      };
-      function drawMap(raph) {
-        for (var state in usMap) {
-          if (runMarathon.indexOf(state) >= 0) {
-            raph.path(usMap[state]).attr(runMarathonDraw);
-          } else if (runHalf.indexOf(state) >= 0) {
-            raph.path(usMap[state]).attr(runHalfDraw);
-          } else if (run10k.indexOf(state) >= 0) {
-            raph.path(usMap[state]).attr(run10kDraw);
-          } else if (run5k.indexOf(state) >= 0) {
-            raph.path(usMap[state]).attr(run5kDraw);
-          } else if (runCaz.indexOf(state) >= 0) {
-            raph.path(usMap[state]).attr(runCazDraw);
-          } else {
-            raph.path(usMap[state]).attr(noRunDraw);
-          }
-        }
-      }
-      w = document.getElementById('run-map-container').clientWidth / 0.8;
-      h = w / 0.8;
+        <script src="scripts/raphael.min.js"></script>
+        <script src="scripts/us-map-svg.js"></script>
+        <script>
+            const runCaz = ["or", "fl", "sc", "nc"];
+            const run5k = ["fl", "tn", "or", "nc", "sc", "wa"];
+            const run10k = ["sc", "or", "nc"];
+            const runHalf = ["or", "nc"];
+            const runMarathon = [];
+            const run5kDraw = {
+                fill: "#505160",
+                stroke: "#FFF",
+                "stroke-opacity": "1",
+                "stroke-linejoin": "round",
+                "stroke-miterlimit": "4",
+                "stroke-width": "0.75",
+                "stroke-dasharray": "none",
+            };
+            const run10kDraw = {
+                fill: "#EC96A4",
+                stroke: "#FFF",
+                "stroke-opacity": "1",
+                "stroke-linejoin": "round",
+                "stroke-miterlimit": "4",
+                "stroke-width": "0.75",
+                "stroke-dasharray": "none",
+            };
+            const runHalfDraw = {
+                fill: "#598234",
+                stroke: "#FFF",
+                "stroke-opacity": "1",
+                "stroke-linejoin": "round",
+                "stroke-miterlimit": "4",
+                "stroke-width": "0.75",
+                "stroke-dasharray": "none",
+            };
+            const runMarathonDraw = {
+                fill: "#336B87",
+                stroke: "#FFF",
+                "stroke-opacity": "1",
+                "stroke-linejoin": "round",
+                "stroke-miterlimit": "4",
+                "stroke-width": "0.75",
+                "stroke-dasharray": "none",
+            };
+            const noRunDraw = {
+                fill: "#D6D6D6",
+                stroke: "#FFF",
+                "stroke-opacity": "1",
+                "stroke-linejoin": "round",
+                "stroke-miterlimit": "4",
+                "stroke-width": "0.75",
+                "stroke-dasharray": "none",
+            };
+            const runCazDraw = {
+                fill: "#AEBD38",
+                stroke: "#FFF",
+                "stroke-opacity": "1",
+                "stroke-linejoin": "round",
+                "stroke-miterlimit": "4",
+                "stroke-width": "0.75",
+                "stroke-dasharray": "none",
+            };
+            function drawMap(raph) {
+                for (var state in usMap) {
+                    if (runMarathon.indexOf(state) >= 0) {
+                        raph.path(usMap[state]).attr(runMarathonDraw);
+                    } else if (runHalf.indexOf(state) >= 0) {
+                        raph.path(usMap[state]).attr(runHalfDraw);
+                    } else if (run10k.indexOf(state) >= 0) {
+                        raph.path(usMap[state]).attr(run10kDraw);
+                    } else if (run5k.indexOf(state) >= 0) {
+                        raph.path(usMap[state]).attr(run5kDraw);
+                    } else if (runCaz.indexOf(state) >= 0) {
+                        raph.path(usMap[state]).attr(runCazDraw);
+                    } else {
+                        raph.path(usMap[state]).attr(noRunDraw);
+                    }
+                }
+            }
+            w = document.getElementById("run-map-container").clientWidth / 0.8;
+            h = w / 0.8;
 
-      var paper = Raphael('run-map-container');
-      paper.setViewBox(0, 0, w, h, true);
-      paper.setSize('100%', '100%');
-      drawMap(paper);
-    </script>
-  </body>
+            var paper = Raphael("run-map-container");
+            paper.setViewBox(0, 0, w, h, true);
+            paper.setSize("100%", "100%");
+            drawMap(paper);
+        </script>
+    </body>
 </html>
