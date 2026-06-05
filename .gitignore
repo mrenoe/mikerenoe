@@ -1,5 +1,4 @@
-
-\.vscode
-
-css/\.DS_Store
+.vscode
+.DS_Store
+node_modules
 .vercel

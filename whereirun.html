@@ -65,7 +65,7 @@
             </ul>
         </section>
         <div id="run-map-container"></div>
-        <footer>Copyright Mike Renoe 2019</footer>
+        <footer>Copyright Mike Renoe <span class="year"></span></footer>
 
         <script src="scripts/raphael.min.js"></script>
         <script src="scripts/us-map-svg.js"></script>
@@ -153,6 +153,9 @@
             paper.setViewBox(0, 0, w, h, true);
             paper.setSize("100%", "100%");
             drawMap(paper);
+
+            document.querySelector(".year").textContent =
+                new Date().getFullYear();
         </script>
     </body>
 </html>
