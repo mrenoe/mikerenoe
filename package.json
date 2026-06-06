@@ -2,6 +2,9 @@
   "name": "mikerenoe",
   "version": "1.0.0",
   "description": "Personal website for Mike Renoe",
+  "engines": {
+    "node": "22.x"
+  },
   "devDependencies": {
     "sass": "^1.99.0"
   },
