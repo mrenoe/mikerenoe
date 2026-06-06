@@ -5,7 +5,7 @@
         <link rel="icon" href="/favicon.png" type="image/x-icon" />
         <meta
             name="description"
-            content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}"
+            content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify | chomp }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}"
         />
         <meta
             name="viewport"
@@ -15,8 +15,8 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
         <link rel="stylesheet" type="text/css" href="/scss/index.css" />
-        {{ with .OutputFormats.Get "rss" -}}
-        <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}" />
+        {{ if .OutputFormats.Get "rss" -}}
+        <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="/feed.xml" />
         {{- end }}
         {{ block "head" . }}{{ end }}
     </head>
