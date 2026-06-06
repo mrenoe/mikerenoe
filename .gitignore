@@ -2,3 +2,9 @@
 .DS_Store
 node_modules
 .vercel
+
+# Generated build output
+public
+resources
+.hugo_build.lock
+static/scss/index.css

@@ -1,0 +1,18 @@
+baseURL = "https://mikerenoe.com/"
+languageCode = "en-us"
+title = "Mike Renoe"
+
+# Blog-only: Hugo never renders a root home page or taxonomies, so the
+# hand-written static/index.html passes through untouched. Only the /blog
+# section and its posts (plus the section RSS feed) are generated.
+disableKinds = ["home", "taxonomy", "term"]
+
+[outputs]
+  section = ["HTML", "RSS"]
+  page = ["HTML"]
+
+[permalinks]
+  blog = "/blog/:slug/"
+
+[params]
+  description = "Writing by Mike Renoe — software, running, and the outdoors."

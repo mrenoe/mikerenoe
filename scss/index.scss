@@ -287,3 +287,43 @@ a {
     padding: 0 0 1em 3em;
   }
 }
+
+// Blog
+.blog-list,
+.blog-post {
+  max-width: 50em;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5em 0 0 0;
+}
+
+.post-list-item {
+  padding-bottom: 1.5em;
+
+  .post-link {
+    font-size: 1.25em;
+    display: block;
+  }
+
+  time {
+    color: gray;
+    font-size: 0.9em;
+  }
+
+  p {
+    margin: 0.25em 0 0 0;
+  }
+}
+
+.post-meta {
+  color: gray;
+  margin-top: -0.5em;
+  padding-bottom: 1em;
+}
+
+.post-back {
+  padding-top: 2em;
+}
