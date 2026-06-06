@@ -6,7 +6,7 @@
         <ul class="post-list">
             {{ range .Pages }}
             <li class="post-list-item">
-                <a class="post-link" href="{{ .Permalink }}">{{ .Title }}</a>
+                <a class="post-link" href="{{ strings.TrimSuffix "/" .Permalink }}">{{ .Title }}</a>
                 <time datetime="{{ .Date.Format "2006-01-02" }}"
                     >{{ .Date.Format "January 2, 2006" }}</time
                 >

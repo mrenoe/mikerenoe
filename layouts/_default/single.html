@@ -1,5 +1,5 @@
 {{ define "head" }}
-<link rel="canonical" href="{{ with .Params.canonicalURL }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}" />
+<link rel="canonical" href="{{ with .Params.canonicalURL }}{{ . }}{{ else }}{{ strings.TrimSuffix "/" .Permalink }}{{ end }}" />
 {{ end }}
 {{ define "main" }}
 <div class="content">
