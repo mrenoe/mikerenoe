@@ -84,7 +84,11 @@
                 >Email Me <span class="arrow-right">→</span></a
             >
         </section>
-        <footer>Copyright Mike Renoe 2024</footer>
+        <footer>Copyright Mike Renoe <span class="year"></span></footer>
+        <script>
+            document.querySelector(".year").textContent =
+                new Date().getFullYear();
+        </script>
     </body>
 </html>
 ```

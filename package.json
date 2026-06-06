@@ -2,9 +2,16 @@
   "name": "mikerenoe",
   "version": "1.0.0",
   "description": "Personal website for Mike Renoe",
-  "devDependencies": {},
+  "engines": {
+    "node": "22.x"
+  },
+  "devDependencies": {
+    "sass": "^1.99.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "sass scss/index.scss scss/index.css --style=compressed --no-source-map",
+    "watch": "sass --watch scss/index.scss:scss/index.css",
+    "dev": "npx --yes serve ."
   },
   "repository": {
     "type": "git",
