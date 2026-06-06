@@ -16,7 +16,7 @@
         <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
         <link rel="stylesheet" type="text/css" href="/scss/index.css" />
         {{ with .OutputFormats.Get "rss" -}}
-        <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}" />
+        <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}" />
         {{- end }}
         {{ block "head" . }}{{ end }}
     </head>
