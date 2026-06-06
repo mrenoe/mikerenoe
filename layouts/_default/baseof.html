@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/favicon.png" type="image/x-icon" />
+        <meta
+            name="description"
+            content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+        <link rel="stylesheet" type="text/css" href="/scss/index.css" />
+        {{ with .OutputFormats.Get "rss" -}}
+        <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}" />
+        {{- end }}
+        {{ block "head" . }}{{ end }}
+    </head>
+    <body>
+        <header>
+            <a href="/" class="site-logo">
+                <img alt="Mike Renoe's logo" title="logo" src="/images/logo.png"
+            /></a>
+
+            <ul class="nav-right">
+                <li class="list-item"><a href="/">Home</a></li>
+                <li class="list-item">
+                    <a href="/whereirun">Where I've Run</a>
+                </li>
+                <li class="list-item"><a href="/blog">Blog</a></li>
+                <li class="list-item">
+                    <a href="https://github.com/mrenoe" target="_blank"
+                        >Github</a
+                    >
+                </li>
+            </ul>
+        </header>
+        {{ block "main" . }}{{ end }}
+        <footer>Copyright Mike Renoe <span class="year"></span></footer>
+        <script>
+            document.querySelector(".year").textContent =
+                new Date().getFullYear();
+        </script>
+    </body>
+</html>

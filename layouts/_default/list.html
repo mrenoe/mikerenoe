@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="content">
+    <section class="about-me blog-list">
+        <h3>{{ .Title }}</h3>
+        {{ with .Content }}{{ . }}{{ end }}
+        <ul class="post-list">
+            {{ range .Pages }}
+            <li class="post-list-item">
+                <a class="post-link" href="{{ .Permalink }}">{{ .Title }}</a>
+                <time datetime="{{ .Date.Format "2006-01-02" }}"
+                    >{{ .Date.Format "January 2, 2006" }}</time
+                >
+                {{ with .Summary }}<p>{{ . }}</p>{{ end }}
+            </li>
+            {{ else }}
+            <li class="post-list-item"><p>No posts yet — check back soon.</p></li>
+            {{ end }}
+        </ul>
+    </section>
+</div>
+{{ end }}

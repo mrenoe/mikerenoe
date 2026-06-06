@@ -9,9 +9,10 @@
     "sass": "^1.99.0"
   },
   "scripts": {
-    "build": "sass scss/index.scss scss/index.css --style=compressed --no-source-map",
-    "watch": "sass --watch scss/index.scss:scss/index.css",
-    "dev": "npx --yes serve ."
+    "build": "sass scss/index.scss static/scss/index.css --style=compressed --no-source-map",
+    "watch": "sass --watch scss/index.scss:static/scss/index.css",
+    "preview": "npm run build && hugo server -D",
+    "dev": "npm run preview"
   },
   "repository": {
     "type": "git",

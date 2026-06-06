@@ -1,0 +1,17 @@
+{{ define "head" }}
+<link rel="canonical" href="{{ with .Params.canonicalURL }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}" />
+{{ end }}
+{{ define "main" }}
+<div class="content">
+    <article class="about-me blog-post">
+        <h3>{{ .Title }}</h3>
+        <p class="post-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}"
+                >{{ .Date.Format "January 2, 2006" }}</time
+            >
+        </p>
+        {{ .Content }}
+        <p class="post-back"><a href="/blog">← All posts</a></p>
+    </article>
+</div>
+{{ end }}
