@@ -1,5 +1,5 @@
 baseURL = "https://mikerenoe.com/"
-locale = "en-us"
+languageCode = "en-us"
 title = "Mike Renoe"
 
 # Blog-only: Hugo never renders a root home page or taxonomies, so the

@@ -6,12 +6,14 @@
     "node": "22.x"
   },
   "devDependencies": {
+    "hugo-bin": "^0.149.2",
     "sass": "^1.99.0"
   },
   "scripts": {
-    "build": "sass scss/index.scss static/scss/index.css --style=compressed --no-source-map",
+    "css": "sass scss/index.scss static/scss/index.css --style=compressed --no-source-map",
+    "build": "npm run css && hugo --gc --minify",
     "watch": "sass --watch scss/index.scss:static/scss/index.css",
-    "preview": "npm run build && hugo server -D",
+    "preview": "npm run css && hugo server -D",
     "dev": "npm run preview"
   },
   "repository": {
