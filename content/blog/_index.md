@@ -1,5 +1,5 @@
 +++
-title = "Blog"
+title = "Notes & Journal"
 +++
 
-Thoughts on software, running, and the outdoors — now published here first.
+Few takes, mostly perspectives reflecting a time and place.
