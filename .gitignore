@@ -8,3 +8,6 @@ public
 resources
 .hugo_build.lock
 static/scss/index.css
+
+# Claude Code local tooling
+.claude
