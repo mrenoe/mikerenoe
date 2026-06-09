@@ -288,42 +288,318 @@ a {
   }
 }
 
-// Blog
-.blog-list,
-.blog-post {
-  max-width: 50em;
+// ============================================================
+// Blog — editorial minimalism
+// Hierarchy is built from three shades of ink + weight contrast:
+//   date (light grey, tracked)  →  title (near-black, bold)  →  lede (grey)
+// ============================================================
+$ink: #1b1c1e; // titles, darkest
+$ink-soft: #34363a; // long-form body text
+$grey: #6a6e75; // lede / summary
+$grey-mute: #9b9fa6; // date eyebrow, meta
+$hairline: rgba(#1b1c1e, 0.12);
+
+.blog-index,
+.post {
+  max-width: 44em;
+  margin: 0 auto;
+  padding: 3.5em 2em 5em;
+  @media all and (max-width: $phone) {
+    padding: 2em 1.25em 3.5em;
+  }
 }
 
+// ---- Index header ----
+.blog-index__head {
+  padding-bottom: 1.75em;
+  border-bottom: 1px solid $hairline;
+}
+
+.blog-index__title {
+  margin: 0;
+  font-size: 2.4em;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: $ink;
+}
+
+.blog-index__intro {
+  margin-top: 0.6em;
+  color: $grey;
+  font-size: 1.1em;
+  line-height: 1.55;
+  p {
+    margin: 0;
+  }
+}
+
+// ---- Post list ----
 .post-list {
   list-style: none;
+  margin: 0;
   padding: 0;
-  margin: 1.5em 0 0 0;
 }
 
-.post-list-item {
-  padding-bottom: 1.5em;
+.post-card {
+  padding: 2.4em 0;
+  border-bottom: 1px solid $hairline;
 
-  .post-link {
-    font-size: 1.25em;
+  &__date {
     display: block;
+    margin-bottom: 0.7em;
+    font-size: 0.72em;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $grey-mute;
   }
 
-  time {
-    color: gray;
-    font-size: 0.9em;
+  &__title {
+    margin: 0;
+    font-size: 1.6em;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+
+    a {
+      color: $ink;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &::after {
+        content: "\2192"; // →
+        display: inline-block;
+        margin-left: 0.3em;
+        color: $baseaccent-color;
+        opacity: 0;
+        transform: translateX(-0.25em);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+    }
+
+    a:hover {
+      color: $baseaccent-color;
+      &::after {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   }
+
+  &__lede {
+    margin: 0.55em 0 0;
+    max-width: 38em;
+    color: $grey;
+    font-size: 1.02em;
+    line-height: 1.55;
+  }
+}
+
+// ---- Pagination "page picker" ----
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  margin-top: 3em;
+}
+
+.pager__pages {
+  display: flex;
+  gap: 0.4em;
+  margin: 0 0.4em;
+  padding: 0;
+  list-style: none;
+}
+
+.pager__num,
+.pager__edge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6em;
+  height: 2.6em;
+  padding: 0 0.7em;
+  font-size: 0.95em;
+  color: $ink-soft;
+  text-decoration: none;
+  border: 1px solid $hairline;
+  border-radius: 3px;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+
+  &:hover {
+    color: $baseaccent-color;
+    border-color: $baseaccent-color;
+  }
+}
+
+.pager__num.is-current {
+  background: $ink;
+  border-color: $ink;
+  color: #fff;
+  font-weight: 700;
+}
+
+.pager__edge.is-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+// ---- Single post ----
+.post__header {
+  margin-bottom: 2em;
+  padding-bottom: 1.6em;
+  border-bottom: 1px solid $hairline;
+}
+
+.post__date {
+  display: block;
+  margin-bottom: 0.8em;
+  font-size: 0.72em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $grey-mute;
+}
+
+.post__title {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: $ink;
+  @media all and (max-width: $phone) {
+    font-size: 1.9em;
+  }
+}
+
+.post__body {
+  color: $ink-soft;
+  font-size: 1.08em;
+  line-height: 1.72;
 
   p {
-    margin: 0.25em 0 0 0;
+    margin: 0 0 1.4em;
+  }
+
+  a,
+  a:visited {
+    color: $baseaccent-color;
+    text-decoration: none;
+    border-bottom: 1px solid rgba($baseaccent-color, 0.4);
+    transition: border-color 0.2s ease;
+  }
+  a:hover {
+    border-bottom-color: $baseaccent-color;
+  }
+
+  h2,
+  h3,
+  h4 {
+    margin: 1.8em 0 0.6em;
+    color: $ink;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1.25em;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 1.4em;
+    padding-left: 1.4em;
+  }
+  li {
+    margin: 0.3em 0;
+  }
+
+  blockquote {
+    margin: 1.6em 0;
+    padding: 0.2em 0 0.2em 1.2em;
+    border-left: 3px solid $baseaccent-color;
+    color: $grey;
+    font-style: italic;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2em auto;
+    border-radius: 3px;
+  }
+
+  // inline code
+  code {
+    padding: 0.12em 0.4em;
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.85em;
+    background: rgba(#1b1c1e, 0.06);
+    border-radius: 3px;
+  }
+
+  // fenced code blocks (Chroma, inline styles via noClasses)
+  .highlight {
+    margin: 1.6em 0;
+    border: 1px solid $hairline;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.82em;
+
+    pre {
+      margin: 0;
+      padding: 1em 1.2em;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    code {
+      padding: 0;
+      background: none;
+      border-radius: 0;
+    }
   }
 }
 
-.post-meta {
-  color: gray;
-  margin-top: -0.5em;
-  padding-bottom: 1em;
+.post__back {
+  margin-top: 3em;
+  padding-top: 1.5em;
+  border-top: 1px solid $hairline;
+
+  a {
+    color: $grey;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    color: $baseaccent-color;
+  }
 }
 
-.post-back {
-  padding-top: 2em;
+// ---- Staggered page-load reveal (motion-safe) ----
+@media (prefers-reduced-motion: no-preference) {
+  .post-card {
+    opacity: 0;
+    animation: post-rise 0.5s ease forwards;
+  }
+  @for $i from 1 through 8 {
+    .post-list li:nth-child(#{$i}) .post-card {
+      animation-delay: #{$i * 0.06}s;
+    }
+  }
+}
+
+@keyframes post-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

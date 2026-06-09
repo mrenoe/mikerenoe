@@ -14,5 +14,14 @@ disableKinds = ["home", "taxonomy", "term"]
 [permalinks]
   blog = "/blog/:slug/"
 
+[pagination]
+  pagerSize = 4
+
+[markup]
+  [markup.highlight]
+    noClasses = true
+    style = "github"
+    tabWidth = 2
+
 [params]
   description = "Writing by Mike Renoe — software, running, and the outdoors."
