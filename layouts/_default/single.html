@@ -3,15 +3,15 @@
 {{ end }}
 {{ define "main" }}
 <div class="content">
-    <article class="about-me blog-post">
-        <h3>{{ .Title }}</h3>
-        <p class="post-meta">
-            <time datetime="{{ .Date.Format "2006-01-02" }}"
-                >{{ .Date.Format "January 2, 2006" }}</time
-            >
-        </p>
-        {{ .Content }}
-        <p class="post-back"><a href="/blog">← All posts</a></p>
+    <article class="post">
+        <header class="post__header">
+            <time class="post__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            <h1 class="post__title">{{ .Title }}</h1>
+        </header>
+        <div class="post__body">
+            {{ .Content }}
+        </div>
+        <nav class="post__back"><a href="/blog">← All posts</a></nav>
     </article>
 </div>
 {{ end }}

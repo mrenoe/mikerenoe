@@ -1,21 +1,49 @@
 {{ define "main" }}
 <div class="content">
-    <section class="about-me blog-list">
-        <h3>{{ .Title }}</h3>
-        {{ with .Content }}{{ . }}{{ end }}
+    <div class="blog-index">
+        <header class="blog-index__head">
+            <h1 class="blog-index__title">{{ .Title }}</h1>
+            {{ with .Content }}<div class="blog-index__intro">{{ . }}</div>{{ end }}
+        </header>
+
+        {{ $paginator := .Paginate .Pages }}
         <ul class="post-list">
-            {{ range .Pages }}
-            <li class="post-list-item">
-                <a class="post-link" href="{{ strings.TrimSuffix "/" .RelPermalink }}">{{ .Title }}</a>
-                <time datetime="{{ .Date.Format "2006-01-02" }}"
-                    >{{ .Date.Format "January 2, 2006" }}</time
-                >
-                {{ with .Summary }}<p>{{ . }}</p>{{ end }}
+            {{ range $paginator.Pages }}
+            <li>
+                <article class="post-card">
+                    <time class="post-card__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                    <h2 class="post-card__title">
+                        <a href="{{ strings.TrimSuffix "/" .RelPermalink }}">{{ .Title }}</a>
+                    </h2>
+                    {{ with .Summary }}<p class="post-card__lede">{{ . | plainify | truncate 220 }}</p>{{ end }}
+                </article>
             </li>
             {{ else }}
-            <li class="post-list-item"><p>No posts yet — check back soon.</p></li>
+            <li><article class="post-card"><p class="post-card__lede">No posts yet — check back soon.</p></article></li>
             {{ end }}
         </ul>
-    </section>
+
+        {{ if gt $paginator.TotalPages 1 }}
+        <nav class="pager" aria-label="Blog pages">
+            {{ if $paginator.HasPrev }}
+            <a class="pager__edge" href="{{ strings.TrimSuffix "/" $paginator.Prev.URL }}" rel="prev" aria-label="Newer posts">←</a>
+            {{ else }}<span class="pager__edge is-disabled" aria-hidden="true">←</span>{{ end }}
+            <ol class="pager__pages">
+                {{ range $paginator.Pagers }}
+                <li>
+                    {{ if eq .PageNumber $paginator.PageNumber }}
+                    <span class="pager__num is-current" aria-current="page">{{ .PageNumber }}</span>
+                    {{ else }}
+                    <a class="pager__num" href="{{ strings.TrimSuffix "/" .URL }}">{{ .PageNumber }}</a>
+                    {{ end }}
+                </li>
+                {{ end }}
+            </ol>
+            {{ if $paginator.HasNext }}
+            <a class="pager__edge" href="{{ strings.TrimSuffix "/" $paginator.Next.URL }}" rel="next" aria-label="Older posts">→</a>
+            {{ else }}<span class="pager__edge is-disabled" aria-hidden="true">→</span>{{ end }}
+        </nav>
+        {{ end }}
+    </div>
 </div>
 {{ end }}
